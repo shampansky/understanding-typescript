@@ -25,13 +25,20 @@ type Numeric = number | boolean;
 
 type Universal = Combinable & Numeric;
 
+// function overload
+function add(a: number, b: number): number;
+function add(one: string, two: string): string;
+// function overload end
 function add(a: Combinable, b: Combinable) {
   // type guard
-  if (typeof a === 'number' || typeof b === 'number') {
+  if (typeof a === 'string' || typeof b === 'string') {
     return a.toString() + b.toString();
   }
   return a + b;
 }
+
+add('one', 'two').split(' ');
+add(2, 4).toFixed();
 
 type UnknownEmployee = Admin | Employee;
 
@@ -107,3 +114,29 @@ function moveAnimal(animal: Animal) {
 }
 
 moveAnimal({ type: 'bird', flyingSpeed: 40 });
+
+// Type casting
+const paragraph = document.querySelector('p');
+
+// Вариант 1
+const userInputElement1 = <HTMLInputElement>(
+  document.querySelector('#user-input')
+);
+// Вариант 2
+const userInputElement2 = document.querySelector(
+  '#user-input'
+) as HTMLInputElement;
+
+userInputElement2.value;
+
+// Index properties
+
+interface ErrorContainer {
+  // { email: 'Not a valid email', name: 'Must start with a letter' }
+  [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  email: 'Not a valid email',
+  id: '3',
+};
