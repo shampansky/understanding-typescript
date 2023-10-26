@@ -140,3 +140,26 @@ const errorBag: ErrorContainer = {
   email: 'Not a valid email',
   id: '3',
 };
+
+// Optional chaining
+
+const fetchedUserData = {
+  id: 'u1',
+  name: 'Ted',
+  job: {
+    title: 'CEO',
+    description: 'My company',
+  },
+};
+
+console.log(fetchedUserData?.job?.title);
+
+// Nullish Coalescing
+
+const foo = null ?? 'default string';
+console.log(foo);
+// Expected output: "default string"
+
+const baz = 0 ?? 42;
+console.log(baz);
+// Expected output: 0
